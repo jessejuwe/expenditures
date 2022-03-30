@@ -1,3 +1,5 @@
+import './ExpenseItem.css';
+
 /**
  * Custom component for rendering the expense of the items
  * @param
@@ -6,12 +8,13 @@
  * @todo Finish Implementation
  */
 const ExpenseItem = () => {
+  const now = new Date();
   return (
-    <div>
-      <div>March 31th, 2022.</div>
-      <div>
+    <div className="expense-item">
+      <div>{now.toLocaleDateString()}</div>
+      <div className="expense-item__description">
         <h2>Car Insurance</h2>
-        <div>$294.67</div>
+        <div className="expense-item__price">$294.67</div>
       </div>
     </div>
   );
