@@ -9,6 +9,17 @@
   background-color: #4b4b4b;
 }
 
+.expense-item__date {
+  display: flex;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  flex-direction: column;
+  flex-flow: column-reverse;
+  color: #ff585f;
+  /* background-image: linear-gradient(to top left, #e52a5a, #ff585f); */
+}
+
 .expense-item__description {
   display: flex;
   flex-direction: column;
