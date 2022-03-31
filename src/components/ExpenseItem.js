@@ -1,5 +1,6 @@
+import ExpenseDate from './ExpenseDate';
+import Card from './Card';
 import './ExpenseItem.css';
-import { DATE_STAMP } from '../config.js';
 
 /**
  * Custom component for rendering the expense of the items
@@ -8,16 +9,26 @@ import { DATE_STAMP } from '../config.js';
  * @author Juwe Jesse
  * @todo Finish Implementation
  */
-const ExpenseItem = () => {
-  const curDate = new Date().toLocaleDateString();
+const ExpenseItem = props => {
+  const options = {
+    style: 'currency',
+    currency: 'USD',
+  };
+
+  const locale = navigator.language;
+
+  // prettier-ignore
+  const price = `${new Intl.NumberFormat(locale, options).format(props.amount)}`;
+
   return (
-    <div className="expense-item">
-      <div className="expense-item__date">{curDate}</div>
+    <Card className="expense-item">
+      <ExpenseDate date={props.date} />
       <div className="expense-item__description">
-        <h2>Car Insurance</h2>
-        <div className="expense-item__price">$294.67</div>
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">{price}</div>
       </div>
-    </div>
+    </Card>
   );
 };
+
 export default ExpenseItem;
