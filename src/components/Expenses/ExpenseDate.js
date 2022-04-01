@@ -1,4 +1,4 @@
-import './ExpenseDate.css';
+import '../Expenses/ExpenseDate.css';
 
 const ExpenseDate = props => {
   const locale = navigator.language;
@@ -6,6 +6,7 @@ const ExpenseDate = props => {
   const day = props.date.toLocaleString(locale, { day: '2-digit' });
   const month = props.date.toLocaleString(locale, { month: 'long' });
   const year = props.date.getFullYear();
+  // const year = props.date.toLocaleString(locale, { year: 'numeric' });
 
   return (
     <div className="expense-date">

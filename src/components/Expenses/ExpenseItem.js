@@ -1,6 +1,9 @@
+// import { useState } from 'react';
+
 import ExpenseDate from './ExpenseDate';
-import Card from './Card';
+import Card from '../UI/Card';
 import './ExpenseItem.css';
+// import NewExpense from '../NewExpense/NewExpense';
 
 /**
  * Custom component for rendering the expense of the items
@@ -10,6 +13,7 @@ import './ExpenseItem.css';
  * @todo Finish Implementation
  */
 const ExpenseItem = props => {
+  // const [amount, setPrice] = useState(props.amount);
   const options = {
     style: 'currency',
     currency: 'USD',
@@ -20,6 +24,12 @@ const ExpenseItem = props => {
   // prettier-ignore
   const price = `${new Intl.NumberFormat(locale, options).format(props.amount)}`;
 
+  // const clickHandler = () => {
+  //   setPrice(5000);
+
+  //   return <NewExpense></NewExpense>;
+  // };
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -27,6 +37,7 @@ const ExpenseItem = props => {
         <h2>{props.title}</h2>
         <div className="expense-item__price">{price}</div>
       </div>
+      {/* <button onClick={clickHandler}>Change Title</button> */}
     </Card>
   );
 };
