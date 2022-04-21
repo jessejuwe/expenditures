@@ -1,4 +1,4 @@
-import '../Expenses/ExpenseDate.css';
+import './ExpenseDate.css';
 
 const ExpenseDate = props => {
   const locale = navigator.language;
