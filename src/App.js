@@ -11,32 +11,7 @@ import NewExpense from './components/NewExpense/NewExpense';
  * @todo Finish Implementation
  */
 
-const DUMMY_EXPENSES = [
-  // {
-  //   id: 'e1',
-  //   title: 'Toilet Paper',
-  //   amount: 94.12,
-  //   date: new Date(2022, 7, 14),
-  // },
-  // {
-  //   id: 'e2',
-  //   title: 'New TV',
-  //   amount: 799.49,
-  //   date: new Date(2021, 2, 12),
-  // },
-  // {
-  //   id: 'e3',
-  //   title: 'Car Insurance',
-  //   amount: 294.67,
-  //   date: new Date(2022, 2, 28),
-  // },
-  // {
-  //   id: 'e4',
-  //   title: 'New Desk (Wooden)',
-  //   amount: 450,
-  //   date: new Date(2021, 5, 12),
-  // },
-];
+const DUMMY_EXPENSES = [];
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
@@ -54,7 +29,11 @@ const App = () => {
     if (!data) return;
 
     console.log(data);
-    expenses.push(...data);
+
+    DUMMY_EXPENSES.push(...data);
+
+    console.log(expenses);
+    console.log(DUMMY_EXPENSES);
   };
 
   // Get data from local storage
@@ -67,14 +46,12 @@ const App = () => {
     console.log(expense);
     console.log('Data Passed!');
 
-    setExpenses([expense, ...expenses]);
+    setExpenses(prevExpenses => {
+      // Push data to local storage
+      setLocalStorage([expense, ...prevExpenses]);
 
-    // Push data to expense []
-    expenses.push(expense);
-    console.log(expenses);
-
-    // Push data to local storage
-    setLocalStorage(expenses);
+      return [expense, ...prevExpenses];
+    });
   };
 
   return (
@@ -85,4 +62,36 @@ const App = () => {
   );
 };
 
+// const init = () => {
+//   getFromLocalStorage();
+// };
+
+// init();
+
 export default App;
+
+/////////////////////////////////////////////////////
+// {
+//   id: 'e1',
+//   title: 'Toilet Paper',
+//   amount: 94.12,
+//   date: new Date(2022, 7, 14),
+// },
+// {
+//   id: 'e2',
+//   title: 'New TV',
+//   amount: 799.49,
+//   date: new Date(2021, 2, 12),
+// },
+// {
+//   id: 'e3',
+//   title: 'Car Insurance',
+//   amount: 294.67,
+//   date: new Date(2022, 2, 28),
+// },
+// {
+//   id: 'e4',
+//   title: 'New Desk (Wooden)',
+//   amount: 450,
+//   date: new Date(2021, 5, 12),
+// },

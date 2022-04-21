@@ -4,14 +4,19 @@ import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import './Expenses.css';
 import ExpenseFilter from './ExpenseFilter';
+import ExpenseList from './ExpenseList';
 
 const Expenses = props => {
   const [filteredYear, setFilteredYear] = useState('2020');
 
   const filterChangeHandler = selectedYear => {
     setFilteredYear(selectedYear);
-    console.log(filteredYear, selectedYear);
   };
+
+  const filteredExpenses = props.items.filter(expense => {
+    return new Date(expense.date).getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -19,16 +24,7 @@ const Expenses = props => {
           selected={filteredYear} // Two way binding (used here to set a default value to the dropdown)
           onFilterExpense={filterChangeHandler}
         />
-        {props.items.map(expense => {
-          return (
-            <ExpenseItem
-              id={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          );
-        })}
+        <ExpenseList items={filteredExpenses} />
       </Card>
     </div>
   );
